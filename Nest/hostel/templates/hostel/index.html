@@ -1,0 +1,14 @@
+{% extends 'hostel/base.html' %}
+{% load static %}
+
+{% block title %}Welcome Home{% endblock title %}
+
+
+{% block content %}
+<h1>Home page</h1>
+{% if user.is_authenticated %}
+<h3>True</h3>
+{% else %}
+<h6>False</h6>
+{% endif %}
+{% endblock content %}
