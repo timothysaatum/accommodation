@@ -37,6 +37,8 @@ def make_booking(request, slug, hostel_pk, room_pk):
 			digital_address = form.cleaned_data['digital_address']
 			sex = form.cleaned_data['sex']
 
+
+
 			if Booking.objects.all().count() == 0:
 				
 				Booking.objects.create(client=request.user, hostel=hostel, school=school, room=room.room_type, cost=cost, 
