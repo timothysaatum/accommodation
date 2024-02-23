@@ -3,7 +3,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}Welcome Home{% endblock title %}
+{% block title %}Unarcom-Add Accommodation{% endblock title %}
 
 
 {% block content %}
@@ -12,14 +12,14 @@
 	<h1 class="text-capitalize text-success">Create a property</h1>
 </div>
 	<form method="POST" enctype="multipart/form-data">
-		{{room_form.management_data}}
 		{% csrf_token %}
+		{{room_form.management_data}}
 		<h5 class="text-capitalize text-success alert alert-success">Hostel info</h5>
 		{{hostel_form|crispy}}
 		<h5 class="text-capitalize text-success alert alert-success">Room Types</h5>
-		{{room_form|crispy}}
+		{{room_forms|crispy}}
 		<div class="text-center">
-			<button class="btn btn-success mb-5">Save Data</button>
+			<button class="btn btn-success mb-5" type="submit">Save Data</button>
 		</div>
 		<hr>
 	</form>

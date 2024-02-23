@@ -104,6 +104,16 @@ class Hostel(models.Model):
 		pass
 
 
+class HostelPicture(models.Model):
+	hostel = models.ForeignKey(Hostel, on_delete=models.CASCADE)
+	image = models.FileField(upload_to='hostels/images')
+
+
+	def __str__(self):
+		return self.hostel.hostel_name
+
+
+
 class Room(models.Model):
 
 	hostel = models.ForeignKey(Hostel, on_delete=models.CASCADE)
@@ -115,6 +125,7 @@ class Room(models.Model):
 	occupant_sex = models.CharField(max_length=15, blank=True, null=True)
 	has_occupant = models.BooleanField(default=False)
 	has_half_payment = models.BooleanField(default=False)
+	is_full = models.BooleanField(default=False)
 
 
 	def __str__(self):
@@ -123,10 +134,16 @@ class Room(models.Model):
 
 	def room_numbers(self):
 
-		rooms = [room for room in range(1, (self.number_available + 1))]
+		rooms = {'Room'+str(room):{'capacity':self.room_capacity, 'sex':None, 'has_occupant':None} for room in range(1, (self.number_available + 1))}
 
 		return rooms
 
+
+	def vacant_rooms(self):
+
+		for num in range(1, (self.number_available + 1)):
+			if self.room_numbers()['Room'+str(num)]['capacity'] == 0:
+				pass
 
 
 	def cost_per_bed(self):

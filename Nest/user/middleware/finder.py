@@ -8,12 +8,11 @@ def find_ip_address(request):
 
 		ip = x_forwarded_for.split(',')[0]
 		
-	else:
 
-		ip = request.META.get('REMOTE_ADDR')
+	ip = request.META.get('REMOTE_ADDR')
 
-		device = request.META['HTTP_USER_AGENT']
+	device = request.META['HTTP_USER_AGENT']
 		
-		data = {'ip':ip, 'device':device}
+	data = {'ip':ip, 'device':device}
 
 	return data

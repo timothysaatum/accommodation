@@ -1,0 +1,26 @@
+{% extends 'hostel/base.html' %}
+{% load static %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Unarcom-Property details{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+<div class="mt-5 pt-5 mb-5 pb-5">
+	<h1 class="text-capitalize text-success">{{hostel.hostel_name}}</h1>
+	{% for room in rooms %}
+	<h1>{{room.room_type}}</h1>
+	<h1>{{room.number_available}}</h1>
+	<h1>{{room.room_capacity}}</h1>
+	<h1>{{room.cost}}</h1>
+	<p>{{room.simple_description}}</p>
+	<a href="{% url 'booking:place-booking' hostel.slug hostel.pk room.pk%}">Book</a>
+	{% endfor %}
+	{% for image in images %}
+	{% endfor %}
+</div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'booking/base.html' %}
+{% load static %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Place booking{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+	<div class="mt-5 pt-5 mb-3">
+		<h1 class="text-capitalize text-success text-center">Place Booking</h1>
+		<form method="POST">
+		{% csrf_token %}
+		{{form|crispy}}
+		<div class="text-center">
+			<button class="btn btn-success mb-5" type="submit">Place booking</button>
+		</div>
+	</form>
+	</div>
+</div>
+{% endblock content %}
